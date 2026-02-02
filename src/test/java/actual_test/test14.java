@@ -27,10 +27,10 @@ public class test14 {
 			
 		driver.close();
 			
-		driver.manage().window().maximize();
+		
 		
 			
-		Thread.sleep(2000);
+	
 	
 
 }}
