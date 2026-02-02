@@ -25,12 +25,12 @@ public class test14 {
 			driver.findElement(By.name("btnLogin")).click();
 			Thread.sleep(4000);
 			
-			driver.close();
+		driver.close();
 			
+		driver.manage().window().maximize();
 		
 			
-		
-
+		Thread.sleep(2000);
 	
 
 }}
