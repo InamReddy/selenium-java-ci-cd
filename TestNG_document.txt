@@ -1,0 +1,38 @@
+Parallel Execution :
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test"  parallel="methods" thread-count="5" >  // parallel= "tests" or "methods" or "classes"
+
+    <classes>
+      <class name="TestNG_Pakage.Parallelexe1"/>
+      <class name="TestNG_Pakage.Parallelexe2"/>
+    </classes>
+  </test> 
+  <test name="">
+  
+  </test><!-- Test -->
+</suite> <!-- Suite -->
+--------------------------------------------------
+xml
+Parameters:
+<parameter key=username , value = inamreddy   /parameter>
+
+---------------------------------------------------------
+Groups: will mention functional or regression or smoke etc...  
+
+XML: 
+
+<run>
+<include>
+---------------------------------------------------
+Run required test cases:
+we can run specific test cases and methods
+
+<Class name=" class name">
+<methods>
+<include name="grap"></incude>
+
+If we have 10 methods we want to run only 9 methods instead of providing 9 methods names ---- we can provide 
+
+<Exclude name="mass"  /Exclude>

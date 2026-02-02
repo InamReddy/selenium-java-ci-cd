@@ -1,0 +1,15 @@
+# Maven
+/target/
+
+# Test reports
+/test-output/
+/ScreenShots/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# OS / temp
+*.log
+*.tmp
