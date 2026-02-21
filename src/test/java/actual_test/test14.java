@@ -1,38 +1,49 @@
 package actual_test;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import org.openqa.selenium.firefox.FirefoxOptions;
 public class test14 {
 
+    @Test
+    public void test() throws Exception {
 
+        // Setup Firefox Driver automatically
+        WebDriverManager.firefoxdriver().setup();
 
+        // Headless mode (required for GitHub Actions / CI)
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--headless");
 
-	@Test
-	public void test() throws Throwable {
+        WebDriver driver = new FirefoxDriver(options);
 
-	    WebDriverManager.firefoxdriver().setup();
+        // Open application
+        driver.get("https://demo.guru99.com/V4/");
 
-	    FirefoxOptions options = new FirefoxOptions();
-	    options.addArguments("--headless");   // runs in CI server
+        // -------- VALIDATION 1 (Login Page Loaded) --------
+        String title = driver.getTitle();
+        System.out.println("Page title is: " + title);
+        Assert.assertEquals(title, "Guru99 Bank Home Page", "Login page not loaded");
 
-	    WebDriver driver = new FirefoxDriver(options);
+        // Login
+        driver.findElement(By.name("uid")).sendKeys("mngr652986");
+        driver.findElement(By.name("password")).sendKeys("jujygEt");
+        driver.findElement(By.name("btnLogin")).click();
 
-	    driver.manage().window().maximize();
-	  //  driver.get("https://demo.guru99.com/V4/");
-		    driver.get("");
+        Thread.sleep(4000); // simple wait (later we replace with WebDriverWait)
 
-	    driver.findElement(By.name("uid")).sendKeys("mngr652986");
-	    driver.findElement(By.name("password")).sendKeys("jujygEt");
-	    driver.findElement(By.name("btnLogin")).click();
+        // -------- VALIDATION 2 (Login Successful) --------
+        String homeTitle = driver.getTitle();
+        System.out.println("After login title: " + homeTitle);
+        Assert.assertTrue(homeTitle.contains("Manager"), "Login failed - Home page not opened");
 
-	    Thread.sleep(4000);
-
-	    driver.quit();
-	}
+        // Close browser
+        driver.quit();
+    }
 }
