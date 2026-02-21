@@ -25,12 +25,11 @@ public class test14 {
 			driver.findElement(By.name("btnLogin")).click();
 			Thread.sleep(4000);
 			
-		driver.close();
 			
-		
-		
-			
-	
-	
+			driver.findElement(By.className("ghkb"));
+			driver.findElement(By.className("ghkb"));
 
+			driver.findElement(By.className("ghkb"));
+// jlskjfdlkfl
+		driver.close();
 }}
