@@ -12,17 +12,8 @@ import java.time.Duration;
 
 public class SecondTest {
 
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-
-        driver.get("https://demo.guru99.com/V4/");
-    }
-
+   WebDriver driver;
+   
     @Test
     public void verifyLogin() {
 
@@ -42,8 +33,5 @@ public class SecondTest {
         Assert.assertEquals(afterLoginTitle, "Manager HomePage WRONG TITLE");
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+   
 }
