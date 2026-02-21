@@ -25,7 +25,7 @@ public class test14 {
 
 	    driver.manage().window().maximize();
 	  //  driver.get("https://demo.guru99.com/V4/");
-		    driver.get("https://amazon..");
+		    driver.get("");
 
 	    driver.findElement(By.name("uid")).sendKeys("mngr652986");
 	    driver.findElement(By.name("password")).sendKeys("jujygEt");
