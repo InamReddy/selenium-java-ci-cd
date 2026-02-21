@@ -25,7 +25,7 @@ public class LoginTest {
 
         // Open application
 //        driver.get("https://demo.guru99.com/V4/");
-        driver.get("");
+//        driver.get("");
         // -------- VALIDATION 1 (Login Page Loaded) --------
         String title = driver.getTitle();
         System.out.println("Page title is: " + title);
