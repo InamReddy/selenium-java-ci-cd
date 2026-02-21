@@ -42,7 +42,7 @@ public class LoginTest {
         String homeTitle = driver.getTitle();
         System.out.println("After login title: " + homeTitle);
         Assert.assertTrue(homeTitle.contains("Manager"), "Login failed - Home page not opened");
-
+//erjgerpoigjeporijx
         // Close browser
         driver.quit();
     }
