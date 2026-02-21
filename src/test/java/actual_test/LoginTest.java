@@ -9,14 +9,14 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class test14 {
+public class LoginTest {
 
     @Test
     public void test() throws Exception {
 
         // Setup Firefox Driver automatically
         WebDriverManager.firefoxdriver().setup();
-
+//dgtfjg
         // Headless mode (required for GitHub Actions / CI)
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
