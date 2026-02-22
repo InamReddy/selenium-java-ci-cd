@@ -1,37 +1,40 @@
-package actual_test;
+package actual_test;   // ⚠ change if your package is actual_test
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SecondTest {
 
-   WebDriver driver;
-   
     @Test
-    public void verifyLogin() {
+    public void verifyHeadingShouldFail() {
 
-        String title = driver.getTitle();
-        System.out.println("Page title is: " + title);
+        // Setup driver
+        WebDriverManager.firefoxdriver().setup();
 
-        Assert.assertEquals(title, "Guru99 Bank Home Page");
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--headless"); // Required for GitHub CI
 
-        driver.findElement(By.name("uid")).sendKeys("mngr652986");
-        driver.findElement(By.name("password")).sendKeys("jujygEt");
-        driver.findElement(By.name("btnLogin")).click();
+        WebDriver driver = new FirefoxDriver(options);
 
-        String afterLoginTitle = driver.getTitle();
-        System.out.println("After login title: " + afterLoginTitle);
+        // Open site
+        driver.get("https://demo.guru99.com/V4/");
 
-        // ❌ INTENTIONALLY WRONG EXPECTED TITLE (this will FAIL)
-        Assert.assertEquals(afterLoginTitle, "Manager HomePage WRONG TITLE");
+        // Get actual heading
+        String actualHeading = driver.findElement(By.xpath("//h2")).getText();
+        System.out.println("Actual heading: " + actualHeading);
+
+        // Intentionally wrong expected text
+        String expectedHeading = "THIS TEST MUST FAIL";
+
+        // This assertion will FAIL
+        Assert.assertEquals(actualHeading, expectedHeading, "Heading does not match");
+
+        driver.quit();
     }
-
-   
 }

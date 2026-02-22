@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import generic_library.WebDriverLibrary;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class newtest {
+public class Newtest {
 
 	@Test 
 	public void test2() {
