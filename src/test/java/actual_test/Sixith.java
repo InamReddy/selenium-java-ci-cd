@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -15,7 +16,12 @@ public void test28() throws Throwable {
 	
 	WebDriverManager.chromedriver().setup();
 	
-	 WebDriver  ganesh =new ChromeDriver();
+	  ChromeOptions options = new ChromeOptions();
+      options.addArguments("--headless=new");     // VERY IMPORTANT
+      options.addArguments("--no-sandbox");       // Required in Linux CI
+      options.addArguments("--disable-dev-shm-usage"); // Prevent crash
+
+      WebDriver ganesh = new ChromeDriver(options);
 	 
          ganesh.get("https://www.youtube.com/");
 
